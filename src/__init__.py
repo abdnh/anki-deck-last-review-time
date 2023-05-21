@@ -2,6 +2,7 @@ import datetime
 import os
 import re
 import sys
+from typing import List, Union
 
 from anki.decks import DeckId
 from anki.utils import ids2str
@@ -11,6 +12,17 @@ from bs4 import BeautifulSoup
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "vendor"))
 import arrow
+import webcolors
+
+
+def linear_gradient(
+    c1: webcolors.HTML5SimpleColor, c2: webcolors.HTML5SimpleColor, ratio: float
+) -> webcolors.HTML5SimpleColor:
+    assert 0 <= ratio >= 1
+    r = c1.red + (c2.red - c1.red) * ratio
+    g = c1.green + (c2.green - c1.green) * ratio
+    b = c1.blue + (c2.blue - c1.blue) * ratio
+    return webcolors.HTML5SimpleColor(r, g, b)
 
 
 def add_last_review_time(
@@ -34,17 +46,21 @@ def add_last_review_time(
             last_review_time = datetime.datetime.fromtimestamp(
                 last_review_time_millis / 1000
             )
-            color = config["colors"][0]
-            if (datetime.datetime.now() - last_review_time).days / 7 >= config[
-                "threshold_weeks"
-            ]:
-                color = config["colors"][1]
-            time_td["style"] = f"color: {color}"
+            colors = config["colors"]
+            ratio = min(
+                (datetime.datetime.now() - last_review_time).total_seconds()
+                / (config["threshold_days"] * 24 * 60 * 60),
+                1,
+            )
+            c1 = webcolors.html5_parse_legacy_color(colors[0])
+            c2 = webcolors.html5_parse_legacy_color(colors[1])
+            color = linear_gradient(c1, c2, ratio)
+            time_td["style"] = f"color: rgb({color.red}, {color.green}, {color.blue})"
 
             if config["date_format"].strip():
                 last_review_time_str = last_review_time.strftime(config["date_format"])
             else:
-                granularity = "auto"
+                granularity: Union[str, List] = "auto"
 
                 delta = datetime.datetime.now() - last_review_time
                 if delta.days or (delta.total_seconds() % 3600) == 0:

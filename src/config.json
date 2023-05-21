@@ -4,5 +4,5 @@
         "red"
     ],
     "date_format": "",
-    "threshold_weeks": 2
+    "threshold_days": 30
 }

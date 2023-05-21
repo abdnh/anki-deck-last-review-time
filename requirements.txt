@@ -1,1 +1,2 @@
 arrow==1.2.3
+webcolors==1.13
