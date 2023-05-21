@@ -1,0 +1,14 @@
+{
+    "type": "object",
+    "properties": {
+        "colors": {
+            "type": "array"
+        },
+        "date_format": {
+            "type": "string"
+        },
+        "threshold_weeks": {
+            "type": "integer"
+        }
+    }
+}

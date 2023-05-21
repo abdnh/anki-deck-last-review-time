@@ -1,0 +1,8 @@
+{
+    "colors": [
+        "blue",
+        "red"
+    ],
+    "date_format": "%Y-%m-%d %H:%M:%S",
+    "threshold_weeks": 2
+}

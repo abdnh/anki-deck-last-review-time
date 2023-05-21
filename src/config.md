@@ -1,0 +1,3 @@
+-   `colors`: a list of two colors to use to indicate how many weeks since you last reviewed the deck.
+-   `date_format`: The date format to use. See [this page](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes) for details.
+-   `threshold_weeks`: The number of weeks since last review time before switching the color of the date text to the second one.

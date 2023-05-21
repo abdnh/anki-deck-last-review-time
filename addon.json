@@ -1,0 +1,6 @@
+{
+    "name": "Show Deck Last Review Time",
+    "package": "deck_last_review_time",
+    "homepage": "https://github.com/abdnh/anki-addon-template",
+    "min_point_version": 45
+}
