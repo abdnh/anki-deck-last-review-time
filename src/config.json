@@ -3,6 +3,6 @@
         "blue",
         "red"
     ],
-    "date_format": "%Y-%m-%d %H:%M:%S",
+    "date_format": "",
     "threshold_weeks": 2
 }

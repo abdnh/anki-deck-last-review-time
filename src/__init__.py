@@ -1,11 +1,16 @@
 import datetime
+import os
 import re
+import sys
 
 from anki.decks import DeckId
 from anki.utils import ids2str
 from aqt import gui_hooks, mw
 from aqt.deckbrowser import DeckBrowser, DeckBrowserContent
 from bs4 import BeautifulSoup
+
+sys.path.append(os.path.join(os.path.dirname(__file__), "vendor"))
+import arrow
 
 
 def add_last_review_time(
@@ -35,7 +40,26 @@ def add_last_review_time(
             ]:
                 color = config["colors"][1]
             time_td["style"] = f"color: {color}"
-            time_td.append(str(last_review_time.strftime(config["date_format"])))
+
+            if config["date_format"].strip():
+                last_review_time_str = last_review_time.strftime(config["date_format"])
+            else:
+                granularity = "auto"
+
+                delta = datetime.datetime.now() - last_review_time
+                if delta.days or (delta.total_seconds() % 3600) == 0:
+                    granularity = []
+                if delta.days:
+                    granularity.append("day")
+                if (delta.total_seconds() % 3600) == 0:
+                    granularity.append("hour")
+                arr = arrow.get(last_review_time)
+                last_review_time_str = arr.humanize(
+                    other=datetime.datetime.now(),
+                    granularity=granularity,
+                )
+
+            time_td.append(last_review_time_str)
 
         td.insert_before(time_td)
 
