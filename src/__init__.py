@@ -56,7 +56,9 @@ def add_last_review_time(
             c1 = webcolors.html5_parse_legacy_color(colors[0])
             c2 = webcolors.html5_parse_legacy_color(colors[1])
             color = linear_gradient(c1, c2, ratio)
-            time_td["style"] = f"color: rgb({color.red}, {color.green}, {color.blue})"
+            time_td[
+                "style"
+            ] = f"color: rgb({color.red}, {color.green}, {color.blue}); {config['style']}"
 
             if config["date_format"].strip():
                 last_review_time_str = last_review_time.strftime(config["date_format"])

@@ -7,6 +7,9 @@
         "date_format": {
             "type": "string"
         },
+        "style": {
+            "type": "string"
+        },
         "threshold_days": {
             "type": "integer"
         }
