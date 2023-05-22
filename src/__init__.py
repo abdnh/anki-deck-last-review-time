@@ -42,6 +42,7 @@ def add_last_review_time(
             f"select max(id) from revlog where cid in (select id from cards where did in {ids2str(dids)})"
         )
         time_td = soup.new_tag("td")
+        time_td["align"] = "right"
         if last_review_time_millis:
             last_review_time = datetime.datetime.fromtimestamp(
                 last_review_time_millis / 1000
