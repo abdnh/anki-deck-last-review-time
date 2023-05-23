@@ -6,6 +6,10 @@ This add-on shows the last time you reviewed decks to the side of their names in
 
 See _Tools > Add-ons > Config_ for customizing the color and the date format.
 
+## Download
+
+You can download the add-on from AnkiWeb: https://ankiweb.net/shared/info/504609572
+
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for a list of changes.
