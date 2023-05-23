@@ -2,6 +2,10 @@
 
 This add-on shows the last time you reviewed decks to the side of their names in the main window.
 
+![deck list](images/image1.png)
+
+See _Tools > Add-ons > Config_ for customizing the color and the date format.
+
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for a list of changes.
