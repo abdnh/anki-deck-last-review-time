@@ -1,5 +1,5 @@
 {
-    "name": "Show Deck Last Review Time",
+    "name": "Show Deck's Last Review Time",
     "package": "deck_last_review_time",
     "homepage": "https://github.com/abdnh/anki-deck-last-review-time",
     "min_point_version": 22
