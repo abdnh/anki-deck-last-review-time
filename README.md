@@ -1,4 +1,4 @@
-# Show Deck Last Review Time
+# Show Deck's Last Review Time
 
 This add-on shows the last time you reviewed decks to the side of their names in the main window.
 
