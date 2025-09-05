@@ -18,7 +18,7 @@ import webcolors
 def linear_gradient(
     c1: webcolors.HTML5SimpleColor, c2: webcolors.HTML5SimpleColor, ratio: float
 ) -> webcolors.HTML5SimpleColor:
-    assert 0 <= ratio >= 1
+    assert 0 <= ratio <= 1
     r = c1.red + (c2.red - c1.red) * ratio
     g = c1.green + (c2.green - c1.green) * ratio
     b = c1.blue + (c2.blue - c1.blue) * ratio
